@@ -1,0 +1,97 @@
+<div id="content" class="container finance-container bg-danger">
+  <section class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-primary text-center ">
+      <h2>PUBLICACIONES REGISTRADAS </h2>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 text-primary ">
+      <form name="formPublicacion" #formPublicacion="ngForm" (ngSubmit)="onSavePublicacion(formPublicacion)">
+        <input type="hidden" name="id" [(ngModel)]="this.dataApi.selectedPublicacion.id">
+        <input type="hidden" name="userUid" [value]="userUid">
+        <div class="form-group">
+          <label for="titulo" class="col-form-label">Titulo:</label>
+          <input type="text" class="form-control" name="titulo" [(ngModel)]="this.dataApi.selectedPublicacion.titulo">
+        </div>
+        <div class="form-group">
+          <label for="resumen" class="col-form-label">Resumen:</label>
+          <input type="text" class="form-control" name="resumen" [(ngModel)]="this.dataApi.selectedPublicacion.resumen">
+        </div>
+        <div class="form-group">
+          <label for="fecha" class="col-form-label">Fecha:</label>
+          <input type="date" class="form-control" name="fecha" [(ngModel)]="this.dataApi.selectedPublicacion.fecha">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="programa">Programa</label>
+            <select name="programa" class="form-control" [(ngModel)]="this.dataApi.selectedPublicacion.programa">
+              <option value="hola_tarija">Hola Tarija</option>
+              <option value="noticiero">Noticiero</option>
+              <option value="aguante_barrio">Aguante Barrio</option>
+              <option value="cara_a_cara_con_roy">Cara a cara Con Roy</option>
+              <option value="sugerencias">Sugerencias</option>
+              <option value="resumen">Resumen</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="estado">estado</label>
+            <select name="estado" class="form-control" [(ngModel)]="this.dataApi.selectedPublicacion.estado">
+              <option value="Borrador">Borrador</option>
+              <option value="Publicado">Publicado</option>
+              <option value="Importante">Importante</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="descripcion" class="col-form-label">Descripcion:</label>
+          <textarea class="form-control" name="descripcion" [(ngModel)]="this.dataApi.selectedPublicacion.descripcion"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="insertar" class="col-form-label">Insertar:</label>
+          <textarea class="form-control" name="insertar" [(ngModel)]="this.dataApi.selectedPublicacion.insertar"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12 text-success">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">programa</th>
+            <th scope="col">estado</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let publicacion of publicacions; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{publicacion.titulo}}</td>
+            <td>{{publicacion.fecha}}</td>
+            <td>{{publicacion.programa}}</td>
+            <td>{{publicacion.estado}}</td>
+            <td *ngIf="publicacion.userUid == userUid || isAdmin == true; else noOwner">
+              <button class="btn btn-primary btn-block" style="font-size:smaller;" (click)="onPreUpdatePublicacion(publicacion)">Actualizar</button>
+            </td>
+            <ng-template #noOwner>
+              <td>
+                <button class="btn btn-secondary btn-block" style="font-size:smaller;" disabled="true">Actualizar</button>
+              </td>
+            </ng-template>
+            <td *ngIf="isAdmin == true; else noAdmin">
+              <button class="btn btn-danger btn-block " style="font-size:smaller;" (click)="onDeletePublicacion(publicacion.id)">Eliminar</button>
+            </td>
+            <ng-template #noAdmin>
+              <td>
+                <button class="btn btn-danger btn-block " style="font-size:smaller;" disabled="true">Eliminar</button>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,64 @@
+<div id="content" class="container bg-beige finance-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-2 col-md-3 "> </div>
+      <div class="col-xs-12 col-sm-8 col-md-6 card mx-auto bg-success">
+        <div class="card_register">
+          <div class="card">
+            <div class="card-body text-center text-primary">
+              <form #formRegister="ngForm" (ngSubmit)="onAddUser()">
+                <h1 class="h3 mb-3 font-weight-normal">Formulario de Registro</h1>
+                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                  {{msgError}}
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="email" required minlength="8">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password" required minlength="5"
+                    maxlength="10">
+                </div>
+                <hr>
+                <div class="form-group">
+                  <h5>Seleccionar image:</h5>
+                  <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+                </div>
+                <!--<div class="progress">
+                  <div [style.visibility]="(uploadPercent == 0) ? 'hidden' : 'visible'" class="progress-bar progress-bar-striped bg-success"
+                    role="progressbar" [style.width]="(uploadPercent | async) +'%'">
+
+                     <span class="progressText" *ngIf="urlImage | async">
+                      Ok!!</span>
+                  </div>
+                </div>-->
+                <br>
+                
+                <input #imageUser type="hidden" [value]="urlImage | async">
+                <button *ngIf="urlImage | async; else btnDisabled" type="submit" class="btn btn-lg btn-success btn-block">Registrar Usuario</button>
+                <ng-template #btnDisabled>
+                  <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">Espere hasta que cargue la imagen</button>
+                </ng-template>
+                <!--<div class="form-group">
+                  <a routerLink="/user/login" class="form-control login-user">Do you have account?</a>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()">
+                    <span class="fa fa-facebook"></span>
+                    FACEBOOK
+                  </button>
+                  <button class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
+                    <span class="fa fa-google"></span>
+                    GOOGLE
+                  </button>
+                </div>-->
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-2 col-md-3 "> </div>
+    </div>
+  </div>
+</div>

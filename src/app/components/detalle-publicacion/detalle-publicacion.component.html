@@ -1,0 +1,18 @@
+<div id="content" class="container finance-container">
+    <div class="card-body text-center text-danger" >
+      <h2>{{pub.titulo}}</h2>
+      <p class="badge badge-info">
+        {{pub.fecha}}
+      </p>
+      <p class="card-text">
+        {{pub.resumen }}
+      </p>
+
+      <app-facebook *ngIf="pub.insertar" [url]="pub.insertar.toString()"></app-facebook>
+      <img *ngIf="pub.photoURL" src="{{pub.photoURL}}" class="rounded-circle img-thumbnail img-fluid" >
+      <p *ngIf="pub.descripcion" class="card-text">
+        {{pub.descripcion }} 
+      </p>
+        
+    </div>
+</div>

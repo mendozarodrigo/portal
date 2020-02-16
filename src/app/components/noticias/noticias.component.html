@@ -1,0 +1,24 @@
+<div id="content" class="container finance-container row">
+    <div class="row ">
+      <app-publicidad></app-publicidad>
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let publicacion of publicacions">    
+            <div class="card" *ngIf="publicacion.estado !='Borrador'">
+              <a  routerLink="/publicacion/{{publicacion.id}}" class="card-title text-danger">
+              <div class="card-body text-center text-danger" >
+                <h2>{{publicacion.titulo}}</h2>
+                <h3 class="card-text">
+                  {{publicacion.resumen }}
+                </h3>
+                <app-iframe *ngIf="publicacion.insertar" [urlVideo]="publicacion.insertar"></app-iframe>
+                <img *ngIf="publicacion.photoURL" src="{{publicacion.photoURL}}" class="rounded-circle img-thumbnail img-fluid" >
+                  <p class="badge badge-info">
+                    {{publicacion.fecha}}
+                  </p>
+                  <br>
+                  <p></p>
+              </div>
+              </a>
+            </div>
+        </div>
+    </div>
+</div>

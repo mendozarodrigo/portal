@@ -1,0 +1,19 @@
+<div id="content" class="container finance-container row">
+    <div class="row ">
+      <app-publicidad></app-publicidad>
+        <div class="col-lg-12 col-md-12 col-sm-12" *ngFor="let online of onlines">    
+            <div class="card">
+              <div class="card-body text-center text-danger" >
+                <h2><a  routerLink="/online/{{online.id}}" class="card-title text-danger">{{online.titulo}}</a></h2>
+                <p class="card-text">
+                  {{online.resumen }}
+                </p>
+                <app-iframe [urlVideo]="online.insertar"></app-iframe>
+                  <p class="badge badge-info">
+                    {{online.categoria}}
+                  </p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

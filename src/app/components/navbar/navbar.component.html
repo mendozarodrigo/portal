@@ -1,0 +1,107 @@
+<header *ngIf="isLogged"> 
+  <div class="container dark-bg no_left no_right">
+    <div class="row">
+
+      <!-- logo --> <!-- <div *ngIf="isLogged">-->
+      <div class=" col-xs-12 	col-sm-4 	col-md-4 	col-lg-4 logo no_left">
+        <a href="#" routerLink="/">
+          <img height="50px" src=" ../../../assets/images/my/logormc.png" alt="logo">
+        </a>
+      </div>	
+      <!-- logo -->
+    
+
+      <div class="col-xs-12 	col-sm-8 	col-md-8 	col-lg-8 right_header no_right">
+
+        <!-- menu -->	
+        <nav class="menu justify-content">
+          <ul>
+            <li>
+              <a href="#" routerLink="/admin/notas">
+                <span>Notas</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" routerLink="/register">
+                <span>New User</span>
+              </a>
+            </li>
+            <li>
+              <a href="#"routerLink="/admin/publicaciones">
+                <span>Publicaciones</span>
+              </a>
+            </li>
+            <li>
+              <a href="#"routerLink="/admin/en_vivo">
+                <span>En Vivo</span>
+              </a>
+            </li>
+          
+            <li class="nav-item" >
+              <a href="#" class="nav-link" (click)="onLogout()">Salir
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- menu -->	
+      </div>
+
+    </div>
+  </div>
+    </header>
+<header *ngIf="!isLogged">
+  <div class="container dark-bg no_left no_right">
+    <div class="row">
+
+      <!-- logo -->
+      <div class=" col-xs-12 	col-sm-4 	col-md-4 	col-lg-4 logo no_left">
+        <a href="#" routerLink="/">
+          <img height="50px" src=" ../../../assets/images/my/logormc.png" alt="logo">
+        </a>
+      </div>	
+      <!-- logo -->
+    
+
+      <div class="col-xs-12 	col-sm-8 	col-md-8 	col-lg-8 right_header no_right">
+
+        <!-- menu -->	
+        <nav class="menu justify-content">
+          <ul>
+            <li  >
+              <a href="#" routerLink="/">
+                <span>Inicio</span>
+              </a>
+            </li>
+            <li >
+              <a  href="#" routerLink="/noticias">
+                <span>Noticias</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" routerLink="/programas">
+                <span>Programas</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" routerLink="/programas/sugerencias">
+                <span>Sugerencias</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" routerLink="/contactame">
+                <span>Contacto</span>
+              </a>
+            </li>
+            <li>
+              <a href="#"routerLink="/online">
+                <span>EN VIVO</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- menu -->	
+      </div>
+
+    </div>
+  </div>
+    </header>
